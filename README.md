@@ -1,9 +1,10 @@
-# vue-google-oauth2
+# vue-google-oauth2-ext
 Handling Google sign-in and sign-out for Vue.js applications.
+Fork from vue-google-oauth2 to add some features
 
 ![npm bundle size](https://img.shields.io/bundlephobia/minzip/vue-google-oauth2.svg)
-![GitHub](https://img.shields.io/github/license/guruahn/vue-google-oauth2.svg)
-![vue-google-oauth2](https://img.shields.io/npm/dt/vue-google-oauth2.svg)
+![GitHub](https://img.shields.io/github/license/marknguyen85/vue-google-oauth2.svg)
+![vue-google-oauth2-ext](https://img.shields.io/npm/dt/vue-google-oauth2.svg)
 
 We support [TypeScript](https://www.typescriptlang.org/) and [Nuxt](https://ko.nuxtjs.org/). 😎 
 
@@ -11,18 +12,18 @@ We support [TypeScript](https://www.typescriptlang.org/) and [Nuxt](https://ko.n
 ## Installation
 ### Installation with npm
 ```
-npm install vue-google-oauth2
+npm install vue-google-oauth2-ext
 ```
 
 ### Installation with yarn
 ```
-yarn add vue-google-oauth2
+yarn add vue-google-oauth2-ext
 ```
 
 ## Initialization
 ```javascript
 //src/main.js
-import GAuth from 'vue-google-oauth2'
+import GAuth from 'vue-google-oauth2-ext'
 const gauthOption = {
   clientId: 'CLIENT_ID.apps.googleusercontent.com',
   scope: 'profile email',
@@ -40,7 +41,7 @@ Please Don't use `plus.login` scope. [It will be deprecated.](https://developers
 	// plugins/vue-google-oauth2.js
 	// file name can be changed to whatever you want
 	import Vue from 'vue'
-	import GAuth from 'vue-google-oauth2'
+	import GAuth from 'vue-google-oauth2-ext'
 
 	const gauthOption = {
 	  clientId: 'CLIENT_ID.apps.googleusercontent.com',
@@ -56,7 +57,7 @@ Please Don't use `plus.login` scope. [It will be deprecated.](https://developers
 	...
 	plugins: [
 	  ...
-      './plugins/vue-google-oauth2'
+      './plugins/vue-google-oauth2-ext'
 	],
 
 	...
@@ -72,15 +73,16 @@ Please Don't use `plus.login` scope. [It will be deprecated.](https://developers
 | fetch_basic_profile       | Boolean   | Optional.       | If set to true, `email profile openid` will [be automatically added as scope](https://developers.google.com/identity/sign-in/web/sign-in). Default value is `true`. |
 
 ## Methods
-| Property     | Description        | Type     |
-|--------------|--------------------|----------|
-| GoogleAuth   | return of [gapi.auth2.getAuthInstance()](https://developers.google.com/identity/sign-in/web/reference#gapiauth2authresponse)   | Object |
-| isAuthorized | Whether or not you have auth | Boolean  |
-| isInit       | Whether or not api init | Boolean  |
-| isLoaded     | Whether or not api init. will be deprecated. | Function  |
-| signIn       | function for sign-in | Function  |
-| getAuthCode  | function for getting authCode | Function  |
-| signOut      | function for sign-out | Function  |
+| Property     			| Description        | Type     |
+|-----------------------|--------------------|----------|
+| GoogleAuth   			| return of [gapi.auth2.getAuthInstance()](https://developers.google.com/identity/sign-in/web/reference#gapiauth2authresponse)   | Object |
+| isAuthorized 			| Whether or not you have auth | Boolean  |
+| isInit       			| Whether or not api init | Boolean  |
+| isLoaded     			| Whether or not api init. will be deprecated. | Function  |
+| signIn       			| function for sign-in | Function  |
+| getAuthCode  			| function for getting authCode | Function  |
+| getAuthCodeWithOption	| function for getting authCode from another account | Function  |
+| signOut      			| function for sign-out | Function  |
 
 
 ## Usages
@@ -127,12 +129,12 @@ curl -d "client_id=YOUR_CLIENT_ID&\
 ```
 
 ### Sample Code
-- [Golang Sample Code](https://github.com/guruahn/vue-google-oauth2/blob/master/backend-samples/golang/main.go)
-- [Python Sample Code](https://github.com/guruahn/vue-google-oauth2/blob/master/backend-samples/python/main.py)
-- [Front Sample Code](https://github.com/guruahn/vue-google-oauth2-front-sample)
+- [Golang Sample Code](https://github.com/marknguyen85/vue-google-oauth2/blob/master/backend-samples/golang/main.go)
+- [Python Sample Code](https://github.com/marknguyen85/vue-google-oauth2/blob/master/backend-samples/python/main.py)
+- [Front Sample Code](https://github.com/marknguyen85/vue-google-oauth2-front-sample)
 
 ## Additional Help
-- [sample login page HTML file](https://github.com/guruahn/vue-google-oauth2/blob/master/sample.html).
+- [sample login page HTML file](https://github.com/marknguyen85/vue-google-oauth2/blob/master/sample.html).
 - [Google API Client Libraries : Methods and Classes](https://developers.google.com/api-client-library/javascript/reference/referencedocs)
 - If you are curious of how the entire Google sign-in flow works, please refer to the diagram below
 ![Google Sign-in Flow](http://i.imgur.com/BQPXKyT.png)
