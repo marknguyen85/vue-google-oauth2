@@ -87,7 +87,7 @@ const googleAuth = ((): any => {
       });
     };
 
-    this.getAuthCode = (successCallback: any, errorCallback: any) => {
+    this.getAuthCodeWithOption = (options, successCallback, errorCallback) => {
       return new Promise((resolve, reject) => {
         if (!this.GoogleAuth) {
           if (typeof errorCallback === 'function') {
@@ -96,7 +96,16 @@ const googleAuth = ((): any => {
           reject(false);
           return;
         }
-        this.GoogleAuth.grantOfflineAccess({ prompt: this.prompt })
+        let option = { prompt: this.prompt }
+        if (options && typeof options === 'object') {
+            if (options.prompt) {
+                option.prompt = options.prompt
+            }
+            if (options.scope) {
+                option["scope"] = options.scope
+            }
+        }
+        this.GoogleAuth.grantOfflineAccess(option)
           .then((resp: any) => {
             if (typeof successCallback === 'function') {
               successCallback(resp.code);
@@ -110,6 +119,10 @@ const googleAuth = ((): any => {
             reject(error);
           });
       });
+  };
+
+    this.getAuthCode = (successCallback: any, errorCallback: any) => {
+      return this.getAuthCodeWithOption(null, successCallback, errorCallback)
     };
 
     this.signOut = (successCallback: any, errorCallback: any) => {
